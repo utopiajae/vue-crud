@@ -5,11 +5,11 @@ Vue.component('crud-item', {
     },
     template: `
         <tr>
-        <th>{{crud.name}}</th>
-        <th>{{crud.age}}</th>
-        <th>{{crud.sex}}</th>
-        <th><button @click="editItem(index)">修改</button></th>
-        <th><button @click="removeItem(index)">刪除</button></th>
+            <th>{{crud.name}}</th>
+            <th>{{crud.age}}</th>
+            <th>{{crud.sex}}</th>
+            <th><button @click="editItem(index)">修改</button></th>
+            <th><button @click="removeItem(index)">刪除</button></th>
         </tr>
     `,
     methods: {
@@ -75,9 +75,15 @@ var app = new Vue({
             this.age = '';
             this.sex = '男';
         },
+        checkInput() {
+            return (!this.name || !this.age | isNaN(+this.age))
+        },
         operation() {
+            if (this.checkInput()) {
+                alert('請輸入正確資料');
+                return;
+            }
             if (this.type === 'create') {
-                if (!this.name || !this.age) return;
                 this.items.push({
                     name: this.name,
                     age: this.age,
@@ -93,6 +99,11 @@ var app = new Vue({
                 this.target = null;
                 this.type = 'create';
             }
+        }
+    },
+    watch: {
+        age() {
+            console.log(this.age)
         }
     }
 })
