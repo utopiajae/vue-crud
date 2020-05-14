@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue-CRUD</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <h5>Vue-CRUD</h5>
+        <div class="input-container">
+            <p>姓名: </p>
+            <input class="input-item" type="text" v-model="name">
+        </div>
+        <div class="input-container">
+            <p>年紀: </p>
+            <input class="input-item" type="text" v-model="age">
+        </div>
+        <div class="input-container">
+            <p>性別: </p>
+            <select id="sex-select" v-model="sex">
+                <option>男</option>
+                <option>女</option>
+            </select>
+        </div>
+
+        <button id="confirmBtn" @click="operation"> {{type}} </button>
+
+        <div id="app-table">
+            <table>
+                <tr id="table-title">
+                    <th>姓名</th>
+                    <th>年紀</th>
+                    <th>性別</th>
+                    <th>修改</th>
+                    <th>刪除</th>
+                </tr>
+                <tr is="crud-item" v-for="(item, index) in items" :crud="item" :index="index" :key="index">
+                    </crud-item>
+            </table>
+        </div>
+    </div>
+    </script>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
