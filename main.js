@@ -8,23 +8,13 @@ Vue.component('crud-item', {
             <th>{{crud.name}}</th>
             <th>{{crud.age}}</th>
             <th>{{crud.sex}}</th>
-            <th><button @click="editItem(index)">修改</button></th>
+            <th><button @click="$emit('edit-item', index)">修改</button></th>
             <th><button @click="removeItem(index)">刪除</button></th>
         </tr>
     `,
     methods: {
         removeItem(index) {
             app.items.splice(index, 1);
-            console.log('刪除');
-        },
-        editItem(index) {
-            console.log(index);
-            let target = app.items[index];
-            app.type = 'confirm';
-            app.name = target.name;
-            app.age = target.age;
-            app.sex = target.sex;
-            app.target = index;
         }
     }
 })
@@ -99,6 +89,15 @@ var app = new Vue({
                 this.target = null;
                 this.type = 'create';
             }
+        },
+        editItem(index) {
+            console.log(index);
+            let target = this.items[index];
+            this.type = 'confirm';
+            this.name = target.name;
+            this.age = target.age;
+            this.sex = target.sex;
+            this.target = index;
         }
     }
 })
