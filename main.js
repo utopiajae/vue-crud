@@ -100,10 +100,5 @@ var app = new Vue({
                 this.type = 'create';
             }
         }
-    },
-    watch: {
-        age() {
-            console.log(this.age)
-        }
     }
 })
