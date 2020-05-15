@@ -15,6 +15,10 @@ Vue.component('crud-item', {
     methods: {
         removeItem(index) {
             app.items.splice(index, 1);
+            if(app.target === index) {
+                app.initInput();
+                app.type = 'create';
+            }
         }
     }
 })
