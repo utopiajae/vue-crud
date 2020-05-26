@@ -15,10 +15,8 @@ Vue.component('crud-item', {
     methods: {
         removeItem(index) {
             app.items.splice(index, 1);
-            if(app.target === index) {
-                app.initInput();
-                app.type = 'create';
-            }
+            app.initInput();
+            app.type = 'create';
         }
     }
 })
@@ -32,35 +30,35 @@ var app = new Vue({
         age: '',
         sex: '男',
         items: [{
-                name: 'jae',
-                age: 10,
-                sex: '男'
-            },
-            {
-                name: 'ollie',
-                age: 11,
-                sex: '女'
-            },
-            {
-                name: 'frank',
-                age: 12,
-                sex: '男'
-            },
-            {
-                name: 'jimmy',
-                age: 13,
-                sex: '男'
-            },
-            {
-                name: 'geng',
-                age: 14,
-                sex: '男'
-            },
-            {
-                name: 'ivan',
-                age: 15,
-                sex: '男'
-            }
+            name: 'jae',
+            age: 10,
+            sex: '男'
+        },
+        {
+            name: 'ollie',
+            age: 11,
+            sex: '女'
+        },
+        {
+            name: 'frank',
+            age: 12,
+            sex: '男'
+        },
+        {
+            name: 'jimmy',
+            age: 13,
+            sex: '男'
+        },
+        {
+            name: 'geng',
+            age: 14,
+            sex: '男'
+        },
+        {
+            name: 'ivan',
+            age: 15,
+            sex: '男'
+        }
         ]
     },
     methods: {
